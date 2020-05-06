@@ -1,0 +1,135 @@
+.index {
+    width: 100%;
+    .search {
+        display: flex;
+        width: 100%;
+        height: 80rpx;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        z-index: 99;
+        box-sizing: border-box;
+        padding: 0 25rpx 0 10rpx;
+        background-color: #fff;
+        div:nth-child(1){
+            width: 115rpx;
+            font-size: 20rpx;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+            padding-right: 15rpx;
+        }
+        div:nth-child(2) {
+            flex: 1;
+            position: relative;
+            input {
+                width: 100%;
+                height: 56rpx;
+                font-size: 26rpx;
+                background-color: #ededed;
+                border-radius: 8rpx;
+                box-sizing: border-box;
+                padding-left: 40rpx;
+            }
+            .searchIcon {
+                width: 25rpx;
+                height: 25rpx;
+                position: absolute;
+                top: 17rpx;
+                left: 10rpx;
+                background: url('../../../static/icon/search.png') center no-repeat;
+                background-size: 100%;
+            }
+        }
+    }
+    .swiper {
+        width: 100%;
+        height: 417rpx;
+        margin-top: 80rpx;
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            .swiper-item {
+                width: 100%;
+                height: 100%;
+                .swiper-img {
+                    width: 100%;
+                }
+            }
+
+        } 
+        
+    }
+    .channel {
+        width: 100%;
+        padding: 40rpx 30rpx;
+        background-color: #fff;
+        display: flex;
+        box-sizing: border-box;
+        div {
+            flex: 1;
+            text-align: center;
+            img {
+                width: 50rpx;
+            }
+            span {
+                display: block;
+                font-size: 24rpx;
+
+            }
+        }
+    }
+    .brand {
+        width: 100%;
+        background-color: #fff;
+        .header {
+            width: 100%;
+            height: 100rpx;
+            line-height: 100rpx;
+            text-align: center;
+            margin-top: 16rpx;
+        }
+        .content {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            div {
+                width: 360rpx;
+                height: 200rpx;
+                margin-bottom: 10rpx;
+                position: relative;
+                &:nth-child(even) {
+                    margin-right: 10rpx;
+                }
+                &:nth-child(odd) {
+                    margin-left: 10rpx;
+                }
+                .des {
+                    position: absolute;
+                    left: 24rpx;
+                    top: 20rpx;
+                    p {
+                        &:nth-child(1) {
+                            color: #333333;
+                        }
+                        &:nth-child(2){
+                            font-size: 20rpx;
+                        }
+                    }
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    // vertical-align: middle;
+                }
+            }
+        }
+    }
+    .buttom {
+        text-align: center;
+    }
+
+}
