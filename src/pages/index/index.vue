@@ -32,13 +32,33 @@
         <div v-for="(item,index) in brandList" :key="index">
           <div class="des">
             <p>{{item.name}}</p>
-            <p>{{item.floor_price}}起</p>
+            <p>{{item.floor_price}}元起</p>
           </div>
           <img :src="item.new_pic_url" mode="widthFix" />
         </div>
       </div>
     </div>
     <!-- 新品首发 -->
+    <div class="newgoods">
+      <div class="newgoods-header">
+        <div class="header-content">
+          <p>新品首发</p>
+          <p>查看全部</p>
+        </div>
+      </div>
+      <div class="newgoods-content">
+        <ul>
+          <scroll-view scroll-x class="scroll-view">
+            <li v-for="(item,index) in newGoods" :key="index">
+              <img :src="item.list_pic_url" alt class="img" />
+              <p>{{item.name}}</p>
+              <p>{{item.goods_brief}}</p>
+              <p>￥{{item.retail_price}}</p>
+            </li>
+          </scroll-view>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -50,7 +70,8 @@ export default {
     return {
       banner: [],
       channelList: [],
-      brandList: []
+      brandList: [],
+      newGoods: []
     };
   },
   components: {},
@@ -59,6 +80,7 @@ export default {
     this.getLunbo()
     this.getChannelList()
     this.getBrandList()
+    this.getNewGoodsList()
   },
   onReachBottom: function () {
   },
@@ -145,8 +167,26 @@ export default {
       this.channelList = data.channelList
     },
     async getBrandList () {
-      const data = await get('/index/brandList')
-      this.brandList = data.brandList
+      const res = await get('/index/brandList')
+      if (!res) {
+        return wx.showToast({
+          title: 'channel数据获取失败', //提示的内容,
+          duration: 1000, //延迟时间,
+          mask: true, //显示透明蒙层，防止触摸穿透,
+        })
+      }
+      this.brandList = res.brandList
+    },
+    async getNewGoodsList () {
+      const res = await get('/index/newgoods')
+      if (!res) {
+        return wx.showToast({
+          title: 'channel数据获取失败', //提示的内容,
+          duration: 1000, //延迟时间,
+          mask: true, //显示透明蒙层，防止触摸穿透,
+        })
+      }
+      this.newGoods = res.newGoods
     }
   },
   computed: {
