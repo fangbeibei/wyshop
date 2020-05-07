@@ -40,7 +40,7 @@
     </div>
     <!-- 新品首发 -->
     <div class="newgoods">
-      <div class="newgoods-header">
+      <div class="newgoods-header" @click="handleToGoodsList('isNew')">
         <div class="header-content">
           <p>新品首发</p>
           <p>查看全部</p>
@@ -124,6 +124,11 @@ export default {
     handleToMoreBrands () {
       wx.navigateTo({
         url: '/pages/morebrands/main'
+      })
+    },
+    handleToGoodsList () {
+      wx.navigateTo({
+        url: '/pages/goodslist/main'
       })
     },
     // -------- 网络请求相关函数 --------
