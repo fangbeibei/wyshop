@@ -59,6 +59,27 @@
         </ul>
       </div>
     </div>
+    <!-- 人气推荐 -->
+    <div class="newgoods recommendgoods">
+      <div class="newgoods-header">
+        <div class="header-content">
+          <p>人气推荐·好物精选</p>
+          <p>查看全部</p>
+        </div>
+      </div>
+      <div class="newgoods-content">
+        <ul>
+          <scroll-view scroll-x class="scroll-view">
+            <li v-for="(item,index) in recommendGoods" :key="index">
+              <img :src="item.list_pic_url" alt class="img" />
+              <p>{{item.name}}</p>
+              <p>{{item.goods_brief}}</p>
+              <p>￥{{item.retail_price}}</p>
+            </li>
+          </scroll-view>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -71,7 +92,8 @@ export default {
       banner: [],
       channelList: [],
       brandList: [],
-      newGoods: []
+      newGoods: [],
+      recommendGoods: []
     };
   },
   components: {},
@@ -81,6 +103,7 @@ export default {
     this.getChannelList()
     this.getBrandList()
     this.getNewGoodsList()
+    this.getRecommendGoods()
   },
   onReachBottom: function () {
   },
@@ -187,6 +210,10 @@ export default {
         })
       }
       this.newGoods = res.newGoods
+    },
+    async getRecommendGoods () {
+      const res = await get('/index/recommendgoods')
+      this.recommendGoods = res.recommendGoods
     }
   },
   computed: {

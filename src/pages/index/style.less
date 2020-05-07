@@ -146,10 +146,12 @@
                     font-size: 32rpx;
                     text-align: center;
                     &:nth-child(2) {
-                        margin-top: 27rpx;
-                        padding: 10rpx 30rpx;
+                        width: 160rpx;
+                        height: 54rpx;
+                        line-height: 54rpx;
                         font-size: 22rpx;
                         background-color: #d8e4f0;
+                        margin: 27rpx auto 0;
                     }
                 }
 
@@ -157,7 +159,6 @@
         }
         .newgoods-content {
             background-color: #fff;
-            
                 .scroll-view {
                     width: 100%;
                     white-space: nowrap;
@@ -192,6 +193,18 @@
                           }
                     }
                 }
+        }
+    }
+    .recommendgoods {
+        .newgoods-header {
+            background: url('../../../static/images/bgtopic.png') no-repeat;
+            .header-content {
+                p {
+                    &:nth-child(2){
+                        background-color: rgb(252, 231, 173);
+                    }
+                }
+            }
         }
     }
 }
