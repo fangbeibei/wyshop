@@ -61,7 +61,7 @@
     </div>
     <!-- 人气推荐 -->
     <div class="newgoods recommendgoods">
-      <div class="newgoods-header">
+      <div class="newgoods-header" @click="handleToGoodsList('isHot')">
         <div class="header-content">
           <p>人气推荐·好物精选</p>
           <p>查看全部</p>
