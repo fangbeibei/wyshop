@@ -8,7 +8,8 @@
     "pages/my/main",
     "pages/city/main",
     "pages/morebrands/main",
-    "pages/goodslist/main"
+    "pages/goodslist/main",
+    "pages/topicdetial/main"
   ],
   "permission": {
     "scope.userLocation": {

@@ -80,6 +80,31 @@
         </ul>
       </div>
     </div>
+    <!-- 专题精选 -->
+    <div class="topic-list">
+      <div class="topic-list-header">
+        专题精选
+        <span class="icon"></span>
+      </div>
+      <div class="topic-list-content">
+        <ul>
+          <scroll-view scroll-x class="scroll-view">
+            <li
+              v-for="(item,index) in topicList"
+              :key="index"
+              @click="handleToTopicDetial(item.id)"
+            >
+              <img :src="item.scene_pic_url" />
+              <div class="title">
+                <p>{{item.title}}</p>
+                <p>{{item.price_info}}元起</p>
+              </div>
+              <p class="subtitle">{{item.subtitle}}</p>
+            </li>
+          </scroll-view>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -93,7 +118,8 @@ export default {
       channelList: [],
       brandList: [],
       newGoods: [],
-      recommendGoods: []
+      recommendGoods: [],
+      topicList: []
     };
   },
   components: {},
@@ -104,6 +130,7 @@ export default {
     this.getBrandList()
     this.getNewGoodsList()
     this.getRecommendGoods()
+    this.getTopicList()
   },
   onReachBottom: function () {
   },
@@ -153,6 +180,9 @@ export default {
       wx.navigateTo({
         url: '/pages/goodslist/main'
       })
+    },
+    handleToTopicDetial (id) {
+      wx.navigateTo({ url: '/pages/topicdetial/main?id=' + id });
     },
     // -------- 网络请求相关函数 --------
     getCityName () {
@@ -219,6 +249,17 @@ export default {
     async getRecommendGoods () {
       const res = await get('/index/recommendgoods')
       this.recommendGoods = res.recommendGoods
+    },
+    async getTopicList () {
+      const res = await get('/index/topiclist')
+      if (!res) {
+        wx.showToast({
+          title: '获取精选专题失败', //提示的内容,
+          duration: 1000, //延迟时间,
+          mask: true, //显示透明蒙层，防止触摸穿透,
+        });
+      }
+      this.topicList = res.topicList
     }
   },
   computed: {
