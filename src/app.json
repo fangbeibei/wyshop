@@ -9,7 +9,8 @@
     "pages/city/main",
     "pages/morebrands/main",
     "pages/goodslist/main",
-    "pages/topicdetial/main"
+    "pages/topicdetial/main",
+    "pages/goodsdetial/main"
   ],
   "permission": {
     "scope.userLocation": {

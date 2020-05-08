@@ -105,6 +105,28 @@
         </ul>
       </div>
     </div>
+    <!-- 好物列表 -->
+    <div class="category">
+      <div class="category-item" v-for="(item,index) in categoryList" :key="index">
+        <div class="item-header">{{item.name}}好物</div>
+        <div class="item-content">
+          <div
+            class="item-content-item"
+            v-for="(item1,index1) in item.goodsList"
+            :key="index1"
+            @click="handleToGoodsDetial(item1.id)"
+          >
+            <img :src="item1.list_pic_url" />
+            <p>{{item1.name}}</p>
+            <p>￥{{item1.retail_price}}</p>
+          </div>
+          <div class="last" @click="handleToCategeryGoods(item.id)">
+            <p>{{item.name}}好物</p>
+            <div class="icon"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -119,7 +141,8 @@ export default {
       brandList: [],
       newGoods: [],
       recommendGoods: [],
-      topicList: []
+      topicList: [],
+      categoryList: []
     };
   },
   components: {},
@@ -131,6 +154,7 @@ export default {
     this.getNewGoodsList()
     this.getRecommendGoods()
     this.getTopicList()
+    this.getCategoryList()
   },
   onReachBottom: function () {
   },
@@ -183,6 +207,13 @@ export default {
     },
     handleToTopicDetial (id) {
       wx.navigateTo({ url: '/pages/topicdetial/main?id=' + id });
+    },
+    handleToGoodsDetial (id) {
+      console.log(id)
+      wx.navigateTo({ url: '/pages/goodsdetial/main' });
+    },
+    handleToCategeryGoods (id) {
+
     },
     // -------- 网络请求相关函数 --------
     getCityName () {
@@ -260,6 +291,10 @@ export default {
         });
       }
       this.topicList = res.topicList
+    },
+    async getCategoryList () {
+      const res = await get('/index/categorylist')
+      this.categoryList = res.categoryList
     }
   },
   computed: {
