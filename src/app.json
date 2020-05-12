@@ -10,7 +10,8 @@
     "pages/morebrands/main",
     "pages/goodslist/main",
     "pages/topicdetial/main",
-    "pages/goodsdetial/main"
+    "pages/goodsdetial/main",
+    "pages/search/main"
   ],
   "permission": {
     "scope.userLocation": {
@@ -21,7 +22,9 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "网易严选",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
   },
   "tabBar": {
     "color": "#666",

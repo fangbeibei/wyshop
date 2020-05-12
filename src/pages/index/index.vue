@@ -3,7 +3,7 @@
     <!-- search -->
     <div class="search">
       <div @click="toMapPage">{{locationName}}</div>
-      <div>
+      <div @click="handleToSearch">
         <input type="text" placeholder="搜索商品" />
         <span class="searchIcon"></span>
       </div>
@@ -213,7 +213,9 @@ export default {
       wx.navigateTo({ url: '/pages/goodsdetial/main' });
     },
     handleToCategeryGoods (id) {
-
+    },
+    handleToSearch () {
+      wx.navigateTo({ url: '/pages/search/main' });
     },
     // -------- 网络请求相关函数 --------
     getCityName () {

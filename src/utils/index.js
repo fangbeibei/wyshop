@@ -52,6 +52,9 @@ export function get (url, data) {
 export function post (url, data) {
   return request(url, 'POST', data)
 }
+export function mydelete (url, data) {
+  return request(url, 'DELETE', data)
+}
 
 export default {
   formatNumber,
